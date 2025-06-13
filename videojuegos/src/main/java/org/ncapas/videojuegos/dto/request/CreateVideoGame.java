@@ -6,9 +6,10 @@ import lombok.Data;
 @Data
 @Builder
 public class CreateVideoGame {
-    private String name;
-    private String genre;
-    private int releaseYear;
-    private String developer;
+    private String nombre;
+    private String genero;
+    private int anioLanzamiento;
+    private String fechaLanzamiento;
+    private String desarrollador;
 }
 
