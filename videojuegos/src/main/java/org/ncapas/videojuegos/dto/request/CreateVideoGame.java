@@ -9,7 +9,6 @@ public class CreateVideoGame {
     private String nombre;
     private String genero;
     private int anioLanzamiento;
-    private String fechaLanzamiento;
     private String desarrollador;
 }
 
