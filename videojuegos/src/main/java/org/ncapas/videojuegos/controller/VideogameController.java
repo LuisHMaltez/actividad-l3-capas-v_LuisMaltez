@@ -6,11 +6,7 @@ import org.ncapas.videojuegos.entity.Videojuego;
 import org.ncapas.videojuegos.service.VideogameService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/videogames")
@@ -37,5 +33,11 @@ public class VideogameController {
     public ResponseEntity<List<Videojuego>> findAll() {
         List<Videojuego> videojuegos = videogameService.findAll();
         return ResponseEntity.ok(videojuegos);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Videojuego> findById(@PathVariable Long id) {
+        Videojuego videojuego = videogameService.findById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(videojuego);
     }
 }
