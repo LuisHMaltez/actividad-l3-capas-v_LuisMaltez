@@ -1,7 +1,9 @@
 package org.ncapas.videojuegos.service;
 
+import java.util.List;
 import org.ncapas.videojuegos.entity.Videojuego;
 import org.ncapas.videojuegos.repository.iVideojuegoRepository;
+import org.ncapas.videojuegos.utils.mappers.VideoGameMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,4 +19,12 @@ public class VideogameService {
         return videojuegoRepository.save(videojuego);
     }
     
+    public List<Videojuego> findAll() {
+        return videojuegoRepository.findAll();
+    }
+
+
+    public Videojuego findById(Long id) {
+        return videojuegoRepository.findById(id).orElse(null);
+    }
     }   
