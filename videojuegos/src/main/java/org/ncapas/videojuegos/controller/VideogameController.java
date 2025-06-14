@@ -1,5 +1,6 @@
 package org.ncapas.videojuegos.controller;
 
+import java.util.List;
 import org.ncapas.videojuegos.dto.request.CreateVideoGame;
 import org.ncapas.videojuegos.entity.Videojuego;
 import org.ncapas.videojuegos.service.VideogameService;
@@ -9,9 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping("/videojuegos")
+@RequestMapping("/api/videogames")
 public class VideogameController {
 
     private final VideogameService videogameService;
@@ -29,5 +31,11 @@ public class VideogameController {
         videojuego.setDesarrollador(createVideoGame.getDesarrollador());
         videojuego = videogameService.save(videojuego);
         return ResponseEntity.status(HttpStatus.CREATED).body(videojuego);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Videojuego>> findAll() {
+        List<Videojuego> videojuegos = videogameService.findAll();
+        return ResponseEntity.ok(videojuegos);
     }
 }
